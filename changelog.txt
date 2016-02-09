@@ -1,0 +1,14 @@
+Legend:
+ + Addition   - Removal  * Update/improvement
+ . No change  ! Bug fix  / Change (non bug-fix)
+
+
+Beta 1
++ First version of FriendlyTron. Seems to work without bugs. //HAHA NOPE
+
+Beta 2
+* Fixed info area after clicking on Run TronScript button.
+* compatible with 8.6.x versions, but incompatible with older.
+* changed -sb to -sdb as in TronScript 8.6.0
+* cosmetic checkbox position modifications
+* fixed title
