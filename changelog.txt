@@ -7,8 +7,13 @@ Beta 1
 + First version of FriendlyTron. Seems to work without bugs. //HAHA NOPE
 
 Beta 2
-* Fixed info area after clicking on Run TronScript button.
+! Fixed info area after clicking on Run TronScript button.
 * compatible with 8.6.x versions, but incompatible with older.
 * changed -sb to -sdb as in TronScript 8.6.0
 * cosmetic checkbox position modifications
 * fixed title
+
+Beta 3
++ Add udl, sdc, sdu flags
+/ Support for TronScript 9.6+ (8.6 - 9.5.1 support dropped)
+* cosmetic changes of viewport
