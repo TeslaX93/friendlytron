@@ -25,10 +25,8 @@ const AnsiString RCBHELP = "Reboot [-r] (auto-reboot 15 seconds after completion
 const AnsiString SACBHELP = "Skip ALL antivirus scans [-sa] (KVRT, MBAM, SAV)";
 const AnsiString SDBCBHELP = "Skip de-bloat [-sdb]. OEM bloatware removal; implies [-m]";
 const AnsiString SDCBHELP = "Skip defrag [-sd]. Force TronScript to ALWAYS skip Stage 5: Defrag";
-
 const AnsiString SDCCBHELP =  "Skip DISM Cleanup [-sdc] (SxS component store deflation)";
 const AnsiString SDUCBHELP =  "Skip debloat update. Prevent Tron from auto-updating the S2 debloat lists";
-
 const AnsiString SECBHELP = "Skip Event Log clearing [-se]";
 const AnsiString SFRCBHELP = "Skip filesystem permissions reset [-sfr]. Saves time if you're in hurry";
 const AnsiString SKCBHELP = "Skip Kaspersky Virus Rescue Tool [-sk] (KVRT) scan";
