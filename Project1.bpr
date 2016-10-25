@@ -5,7 +5,7 @@
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Project1.exe"/>
     <OBJFILES value="Project1.obj Unit1.obj"/>
-    <RESFILES value="Project1.res"/>
+    <RESFILES value="Project1.res controls.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) Unit1.dfm"/>
     <LIBFILES value=""/>
@@ -46,6 +46,7 @@
       <FILE FILENAME="Project1.res" FORMNAME="" UNITNAME="Project1.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Project1.cpp" FORMNAME="" UNITNAME="Project1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Unit1.cpp" FORMNAME="Form1" UNITNAME="Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="controls.rc" FORMNAME="" UNITNAME="controls.rc" CONTAINERID="RCCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -67,14 +68,14 @@ Locale=1033
 CodePage=1252
 
 [Version Info Keys]
-CompanyName=
+CompanyName=TeslaX
 FileDescription=
 FileVersion=0.1.1.0
-InternalName=
+InternalName=friendlytron
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
-ProductName=
+ProductName=friendlytron
 ProductVersion=1.0.0.0
 Comments=
 

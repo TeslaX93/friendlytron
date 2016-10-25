@@ -52,29 +52,29 @@
 
   <IDEOPTIONS>
 [Version Info]
-IncludeVerInfo=0
+IncludeVerInfo=1
 AutoIncBuild=0
-MajorVer=1
-MinorVer=0
-Release=0
+MajorVer=0
+MinorVer=1
+Release=1
 Build=0
 Debug=0
 PreRelease=0
 Special=0
 Private=0
 DLL=0
-Locale=1045
-CodePage=1250
+Locale=1033
+CodePage=1252
 
 [Version Info Keys]
-CompanyName=
+CompanyName=TeslaX
 FileDescription=
-FileVersion=1.0.0.0
-InternalName=
+FileVersion=0.1.1.0
+InternalName=friendlytron
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
-ProductName=
+ProductName=friendlytron
 ProductVersion=1.0.0.0
 Comments=
 

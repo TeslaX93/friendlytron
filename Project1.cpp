@@ -10,7 +10,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         try
         {
                  Application->Initialize();
-                 Application->Title = "FriendlyTron beta by TeslaX93";
+                 Application->Title = "FriendlyTron by TeslaX93";
                  Application->CreateForm(__classid(TForm1), &Form1);
                  Application->Run();
         }
