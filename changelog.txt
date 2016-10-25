@@ -17,3 +17,7 @@ Beta 3
 + Add udl, sdc, sdu flags
 / Support for TronScript 9.6+ (8.6 - 9.5.1 support dropped)
 * cosmetic changes of viewport
+
+Beta 3.1 (not changed version in exe)
+* minor changes in file properties
++ added manifest file
