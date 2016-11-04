@@ -11,6 +11,7 @@
 TForm1 *Form1;
 const char* TRONNAME = "tron.bat";
 AnsiString parameters = "";
+const AnsiString DESCDEFAULT = "Tron is a free and open-source script that automates the process of disinfecting and cleaning up Windows systems. It is built with heavy reliance on community input and updated regularly. Tron supports all versions of Windows from XP to 10 (server variants included).";
 const AnsiString ACBHELP = "Automatic mode [-a]: no prompts; implies [-e]; reboots to Safe Mode";
 const AnsiString CCBHELP = "Config dump [-c] (show config. Can be used with other flags to see what WOULD happen, but script will never execute if this flag is used)";
 const AnsiString DCBHELP = "Dry run [-d] (run through script without executing any jobs)";
@@ -43,7 +44,7 @@ const AnsiString VCBHELP = "Verbose [-v]. Show as much output as possible. NOTE:
 const AnsiString XCBHELP = "Self destruct [-x]. TronScript deletes itself after running and leaves logs intact";
 const AnsiString HCBHELP = "Don't run anything, just show all possible command-line options [-l]";
 const AnsiString UPMCBHELP = "There is no [-upm] flag";
-const AnsiString UDLCBHELP = "Upload debug logs [-udl]. Send tron.log and the system GUID dump to the Tron developer";
+const AnsiString UDLCBHELP = "Upload debug logs [-udl]. Send tron.log and the system GUID dump to the Tron developer (Vocatus)";
 const AnsiString CHECKLB = "If tron.bat was not found, check if you run FriendlyTron with administrator priviledges and you copied it to your unpacked tron directory, and restart FriendlyTron";
 const AnsiString CANCELBTN = "Exit FriendlyTron.";
 const AnsiString RUNBTN = "Run TronScript.";
@@ -61,6 +62,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 Memo1->Lines->Clear();
+Memo1->Lines->Add(DESCDEFAULT);
         fstream TronScript;
         TronScript.open("tron.bat");
         if(TronScript.good()==false) {
@@ -342,12 +344,12 @@ if(sdCB->Checked==true)  parameters = parameters + " -sd";
 if(sdcCB->Checked==true)  parameters = parameters + " -sdc";
 if(sduCB->Checked==true)  parameters = parameters + " -sdu";
 if(seCB->Checked==true)  parameters = parameters + " -se";
-if(sfrCB->Checked==true) parameters = parameters + " -sfr";
+//if(sfrCB->Checked==true) parameters = parameters + " -sfr";
 if(skCB->Checked==true)  parameters = parameters + " -sk";
 if(smCB->Checked==true)  parameters = parameters + " -sm";
 if(spCB->Checked==true)  parameters = parameters + " -sp";
 if(sprCB->Checked==true) parameters = parameters + " -spr";
-if(srrCB->Checked==true) parameters = parameters + " -srr";
+//if(srrCB->Checked==true) parameters = parameters + " -srr";
 if(ssCB->Checked==true)  parameters = parameters + " -ss";
 if(strCB->Checked==true) parameters = parameters + " -str";
 if(swCB->Checked==true)  parameters = parameters + " -sw";
@@ -401,8 +403,8 @@ if(sduCB->Enabled==true){sduCB->Checked=false; sduCB->Enabled=false;} else
 sduCB->Enabled=true;
 if(seCB->Enabled==true) {seCB->Checked=false; seCB->Enabled=false;} else
 seCB->Enabled=true;
-if(sfrCB->Enabled==true) {sfrCB->Checked=false; sfrCB->Enabled=false;} else
-sfrCB->Enabled=true;
+//if(sfrCB->Enabled==true) {sfrCB->Checked=false; sfrCB->Enabled=false;} else
+//sfrCB->Enabled=true;
 if(skCB->Enabled==true) {skCB->Checked=false; skCB->Enabled=false;} else
 skCB->Enabled=true;
 if(smCB->Enabled==true) {smCB->Checked=false; smCB->Enabled=false;} else
@@ -411,8 +413,8 @@ if(spCB->Enabled==true) {spCB->Checked=false; spCB->Enabled=false;} else
 spCB->Enabled=true;
 if(sprCB->Enabled==true) {sprCB->Checked=false; sprCB->Enabled=false;} else
 sprCB->Enabled=true;
-if(srrCB->Enabled==true) {srrCB->Checked=false; srrCB->Enabled=false;} else
-srrCB->Enabled=true;
+//if(srrCB->Enabled==true) {srrCB->Checked=false; srrCB->Enabled=false;} else
+//srrCB->Enabled=true;
 if(ssCB->Enabled==true) {ssCB->Checked=false; ssCB->Enabled=false;} else
 ssCB->Enabled=true;
 if(strCB->Enabled==true) {strCB->Checked=false; strCB->Enabled=false;} else
@@ -476,6 +478,18 @@ void __fastcall TForm1::sduCBMouseMove(TObject *Sender, TShiftState Shift,
 {
 Memo1->Lines->Clear();
 Memo1->Lines->Add(SDUCBHELP);        
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+void __fastcall TForm1::Label1DblClick(TObject *Sender)
+{
+ parameters = parameters + " -upm";
+ Label1->Enabled = false;        
 }
 //---------------------------------------------------------------------------
 
