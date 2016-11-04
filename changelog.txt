@@ -21,3 +21,8 @@ Beta 3
 Beta 3.1 (not changed version in exe)
 * minor changes in file properties
 + added manifest file
+
+Beta 4
+* Compatibility with 9.7+ versions. It should work on 9.6 & 9.7 too, but it is not recommended.
+* cosmetic changes of viewport
+- removed srr and srr switches
