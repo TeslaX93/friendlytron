@@ -3,8 +3,8 @@ object Form1: TForm1
   Top = 107
   BorderStyle = bsDialog
   Caption = 'FriendlyTron by TeslaX93'
-  ClientHeight = 320
-  ClientWidth = 666
+  ClientHeight = 346
+  ClientWidth = 662
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,10 +17,10 @@ object Form1: TForm1
   TextHeight = 13
   object Label3: TLabel
     Left = 8
-    Top = 304
-    Width = 251
+    Top = 328
+    Width = 230
     Height = 13
-    Caption = 'FriendlyTron BETA 4 for TronScript 9.7+ by TeslaX93'
+    Caption = 'FriendlyTron BETA 5 for Tron 10.0+ by TeslaX93'
   end
   object Label1: TLabel
     Left = 472
@@ -30,12 +30,19 @@ object Form1: TForm1
     Caption = 'Description'
     OnDblClick = Label1DblClick
   end
+  object Label4: TLabel
+    Left = 384
+    Top = 320
+    Width = 272
+    Height = 13
+    Caption = 'Tron is free and open-source script written by /u/vocatus.'
+  end
   object GroupBox1: TGroupBox
     Left = 472
     Top = 0
     Width = 185
     Height = 153
-    Caption = 'Run TronScript'
+    Caption = 'Run Tron'
     TabOrder = 0
     object CheckBatLB: TLabel
       Left = 16
@@ -58,7 +65,7 @@ object Form1: TForm1
       Top = 48
       Width = 129
       Height = 33
-      Caption = 'Run TronScript'
+      Caption = 'Run Tron'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -84,7 +91,7 @@ object Form1: TForm1
     Left = 8
     Top = 0
     Width = 457
-    Height = 297
+    Height = 321
     Caption = 'Custom Options (leave all unchecked for default TronScript run)'
     TabOrder = 1
     object Label2: TLabel
@@ -106,7 +113,7 @@ object Form1: TForm1
     end
     object GroupBox3: TGroupBox
       Left = 8
-      Top = 200
+      Top = 224
       Width = 209
       Height = 89
       Caption = 'Advanced'
@@ -225,7 +232,7 @@ object Form1: TForm1
     end
     object sdbCB: TCheckBox
       Left = 224
-      Top = 48
+      Top = 64
       Width = 97
       Height = 17
       Caption = 'OEM Bloatware'
@@ -235,7 +242,7 @@ object Form1: TForm1
     end
     object sdCB: TCheckBox
       Left = 224
-      Top = 64
+      Top = 80
       Width = 105
       Height = 17
       Caption = 'Defragmentation'
@@ -244,7 +251,7 @@ object Form1: TForm1
     end
     object seCB: TCheckBox
       Left = 224
-      Top = 80
+      Top = 96
       Width = 113
       Height = 17
       Caption = 'Event Log clearing'
@@ -253,7 +260,7 @@ object Form1: TForm1
     end
     object skCB: TCheckBox
       Left = 224
-      Top = 96
+      Top = 112
       Width = 169
       Height = 17
       Caption = 'Kaspersky Virus Rescue Tool'
@@ -262,25 +269,25 @@ object Form1: TForm1
     end
     object smCB: TCheckBox
       Left = 224
-      Top = 112
+      Top = 128
       Width = 153
       Height = 17
       Caption = 'MalwareBytes Anti-Malware'
       TabOrder = 14
       OnMouseMove = smCBMouseMove
     end
-    object spCB: TCheckBox
+    object sapCB: TCheckBox
       Left = 224
-      Top = 128
+      Top = 144
       Width = 97
       Height = 17
       Caption = 'Patches'
       TabOrder = 15
-      OnMouseMove = spCBMouseMove
+      OnMouseMove = sapCBMouseMove
     end
     object sprCB: TCheckBox
       Left = 224
-      Top = 144
+      Top = 160
       Width = 129
       Height = 17
       Caption = 'Pagefile settings reset'
@@ -289,7 +296,7 @@ object Form1: TForm1
     end
     object ssCB: TCheckBox
       Left = 224
-      Top = 192
+      Top = 208
       Width = 137
       Height = 17
       Caption = 'Sophos Anti-Virus Scan'
@@ -298,21 +305,22 @@ object Form1: TForm1
     end
     object strCB: TCheckBox
       Left = 224
-      Top = 208
+      Top = 224
       Width = 121
       Height = 17
       Caption = 'Telemetry Removal'
       TabOrder = 18
       OnMouseMove = strCBMouseMove
     end
-    object swCB: TCheckBox
+    object swuCB: TCheckBox
       Left = 224
-      Top = 224
+      Top = 256
       Width = 105
       Height = 17
       Caption = 'Windows Update'
       TabOrder = 19
-      OnMouseMove = swCBMouseMove
+      OnClick = swuCBClick
+      OnMouseMove = swuCBMouseMove
     end
     object eCB: TCheckBox
       Left = 8
@@ -325,7 +333,7 @@ object Form1: TForm1
     end
     object GroupBox4: TGroupBox
       Left = 224
-      Top = 248
+      Top = 272
       Width = 161
       Height = 41
       Caption = 'Help'
@@ -358,7 +366,7 @@ object Form1: TForm1
     end
     object sdcCB: TCheckBox
       Left = 224
-      Top = 160
+      Top = 176
       Width = 145
       Height = 17
       Caption = 'Skip DISM cleanup'
@@ -367,19 +375,37 @@ object Form1: TForm1
     end
     object sduCB: TCheckBox
       Left = 224
-      Top = 176
+      Top = 192
       Width = 121
       Height = 17
       Caption = 'Skip debloat update'
       TabOrder = 24
       OnMouseMove = sduCBMouseMove
     end
+    object scsCB: TCheckBox
+      Left = 224
+      Top = 48
+      Width = 97
+      Height = 17
+      Caption = 'Custom Scripts'
+      TabOrder = 25
+      OnMouseMove = scsCBMouseMove
+    end
+    object swoCB: TCheckBox
+      Left = 224
+      Top = 240
+      Width = 97
+      Height = 17
+      Caption = 'WSUS Offline'
+      TabOrder = 26
+      OnMouseMove = swoCBMouseMove
+    end
   end
   object Memo1: TMemo
     Left = 472
     Top = 176
     Width = 185
-    Height = 121
+    Height = 137
     ReadOnly = True
     TabOrder = 2
   end

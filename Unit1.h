@@ -38,11 +38,11 @@ __published:	// IDE-managed Components
         TCheckBox *seCB;
         TCheckBox *skCB;
         TCheckBox *smCB;
-        TCheckBox *spCB;
+        TCheckBox *sapCB;
         TCheckBox *sprCB;
         TCheckBox *ssCB;
         TCheckBox *strCB;
-        TCheckBox *swCB;
+        TCheckBox *swuCB;
         TGroupBox *GroupBox4;
         TCheckBox *hCB;
         TLabel *Label3;
@@ -52,6 +52,8 @@ __published:	// IDE-managed Components
         TCheckBox *sduCB;
         TLabel *Label1;
         TLabel *Label4;
+        TCheckBox *scsCB;
+        TCheckBox *swoCB;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall CancelBtnClick(TObject *Sender);
         void __fastcall aCBClick(TObject *Sender);
@@ -101,7 +103,7 @@ __published:	// IDE-managed Components
           int X, int Y);
         void __fastcall smCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
-        void __fastcall spCBMouseMove(TObject *Sender, TShiftState Shift,
+        void __fastcall sapCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
         void __fastcall sprCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
@@ -111,7 +113,7 @@ __published:	// IDE-managed Components
           int X, int Y);
         void __fastcall strCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
-        void __fastcall swCBMouseMove(TObject *Sender, TShiftState Shift,
+        void __fastcall swuCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
         void __fastcall hCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
@@ -131,6 +133,11 @@ __published:	// IDE-managed Components
         void __fastcall sduCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
         void __fastcall Label1DblClick(TObject *Sender);
+        void __fastcall scsCBMouseMove(TObject *Sender, TShiftState Shift,
+          int X, int Y);
+        void __fastcall swuCBClick(TObject *Sender);
+        void __fastcall swoCBMouseMove(TObject *Sender, TShiftState Shift,
+          int X, int Y);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

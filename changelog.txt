@@ -26,3 +26,6 @@ Beta 4
 * Compatibility with 9.7+ versions. It should work on 9.6 & 9.7 too, but it is not recommended.
 * cosmetic changes of viewport
 - removed srr and srr switches
+
+Beta 5
++ 10.0 support

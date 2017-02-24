@@ -34,12 +34,14 @@ const AnsiString SECBHELP = "Skip Event Log clearing [-se]";
 const AnsiString SFRCBHELP = "Skip filesystem permissions reset [-sfr]. Saves time if you're in hurry";
 const AnsiString SKCBHELP = "Skip Kaspersky Virus Rescue Tool [-sk] (KVRT) scan";
 const AnsiString SMCBHELP = "Skip MalwareBytes Anti-Malware [-sm] (MBAM) installation";
-const AnsiString SPCBHELP = "Skip patches [-sp]. Do not patch 7zip, Java JRE, Adobe Flash Player, Adobe Reader";
+const AnsiString SAPCBHELP = "Skip patches [-sap]. Do not patch 7zip, Java JRE, Adobe Flash Player, Adobe Reader";
+const AnsiString SCSCBHELP = "Skip custom scripts [-scs] (has no effect if you haven't supplied custom scripts)";
+const AnsiString SWOCBHELP = "Skip only bundled WSUS Offline updates [-swo] (online updates still attempted)";
 const AnsiString SPRCBHELP = "Skip page file settings reset [-spr]. Don't set to 'Let Windows manage the page file'";
 const AnsiString SRRCBHELP = "Skip registry permissions reset [-srr]. Saves time if you're in hurry";
 const AnsiString SSCBHELP = "Skip Sophos Anti-Virus (SAV) scan [-ss]";
 const AnsiString STRCBHELP = "Skip Telemetry Removal [-str] (don't remove Windows user tracking, Windows 7 and up only)";
-const AnsiString SWCBHELP = "Skip Windows Updates [-sw] (do not attempt to run Windows Update)";
+const AnsiString SWUCBHELP = "Skip Windows Updates entirely [-swu] (ignore both WSUS Offline and online methods)";
 const AnsiString VCBHELP = "Verbose [-v]. Show as much output as possible. NOTE: Significantly slower!";
 const AnsiString XCBHELP = "Self destruct [-x]. TronScript deletes itself after running and leaves logs intact";
 const AnsiString HCBHELP = "Don't run anything, just show all possible command-line options [-l]";
@@ -268,11 +270,11 @@ Memo1->Lines->Clear();
 Memo1->Lines->Add(SMCBHELP);        
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::spCBMouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TForm1::sapCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
 Memo1->Lines->Clear();
-Memo1->Lines->Add(SPCBHELP);        
+Memo1->Lines->Add(SAPCBHELP);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::sprCBMouseMove(TObject *Sender, TShiftState Shift,
@@ -293,7 +295,7 @@ void __fastcall TForm1::ssCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
 Memo1->Lines->Clear();
-Memo1->Lines->Add(SSCBHELP);        
+Memo1->Lines->Add(SSCBHELP);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::strCBMouseMove(TObject *Sender, TShiftState Shift,
@@ -303,11 +305,11 @@ Memo1->Lines->Clear();
 Memo1->Lines->Add(STRCBHELP);        
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::swCBMouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TForm1::swuCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
 Memo1->Lines->Clear();
-Memo1->Lines->Add(SWCBHELP);
+Memo1->Lines->Add(SWUCBHELP);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::hCBMouseMove(TObject *Sender, TShiftState Shift,
@@ -342,17 +344,19 @@ if(saCB->Checked==true)  parameters = parameters + " -sa";
 if(sdbCB->Checked==true)  parameters = parameters + " -sdb";
 if(sdCB->Checked==true)  parameters = parameters + " -sd";
 if(sdcCB->Checked==true)  parameters = parameters + " -sdc";
+if(scsCB->Checked==true)  parameters = parameters + " -scs";
 if(sduCB->Checked==true)  parameters = parameters + " -sdu";
 if(seCB->Checked==true)  parameters = parameters + " -se";
 //if(sfrCB->Checked==true) parameters = parameters + " -sfr";
 if(skCB->Checked==true)  parameters = parameters + " -sk";
 if(smCB->Checked==true)  parameters = parameters + " -sm";
-if(spCB->Checked==true)  parameters = parameters + " -sp";
+if(sapCB->Checked==true)  parameters = parameters + " -sap";
 if(sprCB->Checked==true) parameters = parameters + " -spr";
 //if(srrCB->Checked==true) parameters = parameters + " -srr";
 if(ssCB->Checked==true)  parameters = parameters + " -ss";
 if(strCB->Checked==true) parameters = parameters + " -str";
-if(swCB->Checked==true)  parameters = parameters + " -sw";
+if(swoCB->Checked==true)  parameters = parameters + " -swo";
+if(swuCB->Checked==true)  parameters = parameters + " -swu";
 if(xCB->Checked==true)  parameters = parameters + " -x";
 if(udlCB->Checked==true) parameters = parameters + " -udl";
 Memo1->Lines->Clear();
@@ -409,18 +413,22 @@ if(skCB->Enabled==true) {skCB->Checked=false; skCB->Enabled=false;} else
 skCB->Enabled=true;
 if(smCB->Enabled==true) {smCB->Checked=false; smCB->Enabled=false;} else
 smCB->Enabled=true;
-if(spCB->Enabled==true) {spCB->Checked=false; spCB->Enabled=false;} else
-spCB->Enabled=true;
+if(sapCB->Enabled==true) {sapCB->Checked=false; sapCB->Enabled=false;} else
+sapCB->Enabled=true;
 if(sprCB->Enabled==true) {sprCB->Checked=false; sprCB->Enabled=false;} else
 sprCB->Enabled=true;
 //if(srrCB->Enabled==true) {srrCB->Checked=false; srrCB->Enabled=false;} else
 //srrCB->Enabled=true;
 if(ssCB->Enabled==true) {ssCB->Checked=false; ssCB->Enabled=false;} else
 ssCB->Enabled=true;
+if(scsCB->Enabled==true) {scsCB->Checked=false; scsCB->Enabled=false;} else
+scsCB->Enabled=true;
 if(strCB->Enabled==true) {strCB->Checked=false; strCB->Enabled=false;} else
 strCB->Enabled=true;
-if(swCB->Enabled==true) {swCB->Checked=false; swCB->Enabled=false;} else
-swCB->Enabled=true;
+if(swuCB->Enabled==true) {swuCB->Checked=false; swuCB->Enabled=false;} else
+swuCB->Enabled=true;
+if(swoCB->Enabled==true) {swoCB->Checked=false; swoCB->Enabled=false;} else
+swoCB->Enabled=true;
 if(udlCB->Enabled==true){udlCB->Checked=false; udlCB->Enabled=false;} else
 udlCB->Enabled=true;
 if(xCB->Enabled==true) {xCB->Checked=false; xCB->Enabled=false;} else
@@ -493,4 +501,28 @@ void __fastcall TForm1::Label1DblClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+
+void __fastcall TForm1::scsCBMouseMove(TObject *Sender, TShiftState Shift,
+      int X, int Y)
+{
+  Memo1->Lines->Clear();
+Memo1->Lines->Add(SCSCBHELP);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::swuCBClick(TObject *Sender)
+{
+if(swoCB->Enabled==true) {swoCB->Checked=false; swoCB->Enabled=false;} else
+swoCB->Enabled=true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::swoCBMouseMove(TObject *Sender, TShiftState Shift,
+      int X, int Y)
+{
+Memo1->Lines->Clear();
+Memo1->Lines->Add(SWOCBHELP);
+}
+//---------------------------------------------------------------------------
 
