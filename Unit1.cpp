@@ -13,6 +13,7 @@ const char* TRONNAME = "tron.bat";
 AnsiString parameters = "";
 const AnsiString DESCDEFAULT = "Tron is a free and open-source script that automates the process of disinfecting and cleaning up Windows systems. It is built with heavy reliance on community input and updated regularly. Tron supports all versions of Windows from XP to 10 (server variants included).";
 const AnsiString ACBHELP = "Automatic mode [-a]: no prompts; implies [-e]; reboots to Safe Mode";
+const AnsiString ASMCBHELP = "Automatically reboot to Safe Mode [-asm] (must be used with [-a], otherwise ignored)";
 const AnsiString CCBHELP = "Config dump [-c] (show config. Can be used with other flags to see what WOULD happen, but script will never execute if this flag is used)";
 const AnsiString DCBHELP = "Dry run [-d] (run through script without executing any jobs)";
 const AnsiString DEVCBHELP = "Override OS Detection [-dev] (allow running on unsupported Windows versions)";
@@ -24,24 +25,22 @@ const AnsiString OCBHELP = "Power off after running [-o]. Overrides [-r]";
 const AnsiString PCBHELP = "Preserve power settings [-p]. Don't reset to Windows default";
 const AnsiString RCBHELP = "Reboot [-r] (auto-reboot 15 seconds after completion)";
 const AnsiString SACBHELP = "Skip ALL antivirus scans [-sa] (KVRT, MBAM, SAV)";
+const AnsiString SCSCBHELP = "Skip custom scripts [-scs] (has no effect if you haven't supplied custom scripts)";
 const AnsiString SDBCBHELP = "Skip de-bloat [-sdb]. OEM bloatware removal; implies [-m]";
 const AnsiString SDCBHELP = "Skip defrag [-sd]. Force TronScript to ALWAYS skip Stage 5: Defrag";
-
 const AnsiString SDCCBHELP =  "Skip DISM Cleanup [-sdc] (SxS component store deflation)";
 const AnsiString SDUCBHELP =  "Skip debloat update. Prevent Tron from auto-updating the S2 debloat lists";
-
 const AnsiString SECBHELP = "Skip Event Log clearing [-se]";
 const AnsiString SFRCBHELP = "Skip filesystem permissions reset [-sfr]. Saves time if you're in hurry";
 const AnsiString SKCBHELP = "Skip Kaspersky Virus Rescue Tool [-sk] (KVRT) scan";
 const AnsiString SMCBHELP = "Skip MalwareBytes Anti-Malware [-sm] (MBAM) installation";
 const AnsiString SAPCBHELP = "Skip patches [-sap]. Do not patch 7zip, Java JRE, Adobe Flash Player, Adobe Reader";
-const AnsiString SCSCBHELP = "Skip custom scripts [-scs] (has no effect if you haven't supplied custom scripts)";
-const AnsiString SWOCBHELP = "Skip only bundled WSUS Offline updates [-swo] (online updates still attempted)";
 const AnsiString SPRCBHELP = "Skip page file settings reset [-spr]. Don't set to 'Let Windows manage the page file'";
 const AnsiString SRRCBHELP = "Skip registry permissions reset [-srr]. Saves time if you're in hurry";
 const AnsiString SSCBHELP = "Skip Sophos Anti-Virus (SAV) scan [-ss]";
 const AnsiString STRCBHELP = "Skip Telemetry Removal [-str] (don't remove Windows user tracking, Windows 7 and up only)";
-const AnsiString SWUCBHELP = "Skip Windows Updates entirely [-swu] (ignore both WSUS Offline and online methods)";
+const AnsiString SWOCBHELP = "Skip user-supplied WSUS Offline updates [-swo] (if they exist; online updates still attempted)";
+const AnsiString SWUCBHELP = "Skip Windows Updates [-sw] (do not attempt to run Windows Update)";
 const AnsiString VCBHELP = "Verbose [-v]. Show as much output as possible. NOTE: Significantly slower!";
 const AnsiString XCBHELP = "Self destruct [-x]. TronScript deletes itself after running and leaves logs intact";
 const AnsiString HCBHELP = "Don't run anything, just show all possible command-line options [-l]";
@@ -70,6 +69,7 @@ Memo1->Lines->Add(DESCDEFAULT);
         if(TronScript.good()==false) {
         CheckBatLB->Caption="File tron.bat not found!";
         CallTronBtn->Enabled=false;
+        CallTronBtn->Caption="Check admin priviledges";
          }
         else {
         CheckBatLB->Caption="File tron.bat found!";
@@ -90,6 +90,8 @@ void __fastcall TForm1::aCBClick(TObject *Sender)
 {
 if(eCB->Enabled==true) {eCB->Checked=false; eCB->Enabled=false;} else
 eCB->Enabled=true;
+if(asmCB->Enabled==true) {asmCB->Checked=false; asmCB->Enabled=false;} else
+asmCB->Enabled=true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::DefaultOptClick(TObject *Sender)
@@ -274,7 +276,7 @@ void __fastcall TForm1::sapCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
 Memo1->Lines->Clear();
-Memo1->Lines->Add(SAPCBHELP);
+Memo1->Lines->Add(SAPCBHELP);        
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::sprCBMouseMove(TObject *Sender, TShiftState Shift,
@@ -295,7 +297,7 @@ void __fastcall TForm1::ssCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
 Memo1->Lines->Clear();
-Memo1->Lines->Add(SSCBHELP);
+Memo1->Lines->Add(SSCBHELP);        
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::strCBMouseMove(TObject *Sender, TShiftState Shift,
@@ -328,6 +330,7 @@ mCB->Enabled=true;
 void __fastcall TForm1::CallTronBtnClick(TObject *Sender)
 {
 if(aCB->Checked==true)   parameters = parameters + " -a";
+if(asmCB->Checked==true) parameters = parameters + " -asm";
 if(eCB->Checked==true)   parameters = parameters + " -e";
 if(erCB->Checked==true)  parameters = parameters + " -er";
 if(cCB->Checked==true)   parameters = parameters + " -c";
@@ -342,25 +345,22 @@ if(pCB->Checked==true)   parameters = parameters + " -p";
 if(rCB->Checked==true)   parameters = parameters + " -r";
 if(saCB->Checked==true)  parameters = parameters + " -sa";
 if(sdbCB->Checked==true)  parameters = parameters + " -sdb";
+if(scsCB->Checked==true) parameters = parameters + " -scs";
 if(sdCB->Checked==true)  parameters = parameters + " -sd";
 if(sdcCB->Checked==true)  parameters = parameters + " -sdc";
-if(scsCB->Checked==true)  parameters = parameters + " -scs";
 if(sduCB->Checked==true)  parameters = parameters + " -sdu";
 if(seCB->Checked==true)  parameters = parameters + " -se";
-//if(sfrCB->Checked==true) parameters = parameters + " -sfr";
 if(skCB->Checked==true)  parameters = parameters + " -sk";
 if(smCB->Checked==true)  parameters = parameters + " -sm";
 if(sapCB->Checked==true)  parameters = parameters + " -sap";
 if(sprCB->Checked==true) parameters = parameters + " -spr";
-//if(srrCB->Checked==true) parameters = parameters + " -srr";
 if(ssCB->Checked==true)  parameters = parameters + " -ss";
 if(strCB->Checked==true) parameters = parameters + " -str";
-if(swoCB->Checked==true)  parameters = parameters + " -swo";
 if(swuCB->Checked==true)  parameters = parameters + " -swu";
+if(swoCB->Checked==true)  parameters = parameters + " -swo";
 if(xCB->Checked==true)  parameters = parameters + " -x";
 if(udlCB->Checked==true) parameters = parameters + " -udl";
 Memo1->Lines->Clear();
-//Memo1->Lines->Add("I'm trying to run TronScript...");
 Memo1->Lines->Add(parameters);
 const char* CPARAM = parameters.c_str();
 
@@ -373,6 +373,8 @@ void __fastcall TForm1::hCBClick(TObject *Sender)
 {
 if(aCB->Enabled==true) {aCB->Checked=false; aCB->Enabled=false;} else
 aCB->Enabled=true;
+if(asmCB->Enabled==true) {asmCB->Checked=false; asmCB->Enabled=false;} else
+asmCB->Enabled=true;
 if(eCB->Enabled==true) {eCB->Checked=false; eCB->Enabled=false;} else
 eCB->Enabled=true;
 if(erCB->Enabled==true) {erCB->Checked=false; erCB->Enabled=false;} else
@@ -399,6 +401,8 @@ if(saCB->Enabled==true) {saCB->Checked=false; saCB->Enabled=false;} else
 saCB->Enabled=true;
 if(sdbCB->Enabled==true) {sdbCB->Checked=false; sdbCB->Enabled=false;} else
 sdbCB->Enabled=true;
+if(scsCB->Enabled==true) {scsCB->Checked=false; scsCB->Enabled=false;} else
+scsCB->Enabled=true;
 if(sdCB->Enabled==true) {sdCB->Checked=false; sdCB->Enabled=false;} else
 sdCB->Enabled=true;
 if(sdcCB->Enabled==true){sdcCB->Checked=false; sdcCB->Enabled=false;} else
@@ -407,8 +411,6 @@ if(sduCB->Enabled==true){sduCB->Checked=false; sduCB->Enabled=false;} else
 sduCB->Enabled=true;
 if(seCB->Enabled==true) {seCB->Checked=false; seCB->Enabled=false;} else
 seCB->Enabled=true;
-//if(sfrCB->Enabled==true) {sfrCB->Checked=false; sfrCB->Enabled=false;} else
-//sfrCB->Enabled=true;
 if(skCB->Enabled==true) {skCB->Checked=false; skCB->Enabled=false;} else
 skCB->Enabled=true;
 if(smCB->Enabled==true) {smCB->Checked=false; smCB->Enabled=false;} else
@@ -417,12 +419,8 @@ if(sapCB->Enabled==true) {sapCB->Checked=false; sapCB->Enabled=false;} else
 sapCB->Enabled=true;
 if(sprCB->Enabled==true) {sprCB->Checked=false; sprCB->Enabled=false;} else
 sprCB->Enabled=true;
-//if(srrCB->Enabled==true) {srrCB->Checked=false; srrCB->Enabled=false;} else
-//srrCB->Enabled=true;
 if(ssCB->Enabled==true) {ssCB->Checked=false; ssCB->Enabled=false;} else
 ssCB->Enabled=true;
-if(scsCB->Enabled==true) {scsCB->Checked=false; scsCB->Enabled=false;} else
-scsCB->Enabled=true;
 if(strCB->Enabled==true) {strCB->Checked=false; strCB->Enabled=false;} else
 strCB->Enabled=true;
 if(swuCB->Enabled==true) {swuCB->Checked=false; swuCB->Enabled=false;} else
@@ -461,9 +459,6 @@ Memo1->Lines->Add(RUNBTN);
 }
 //---------------------------------------------------------------------------
 
-
-
-
 void __fastcall TForm1::udlCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
@@ -471,7 +466,6 @@ Memo1->Lines->Clear();
 Memo1->Lines->Add(UDLCBHELP);
 }
 //---------------------------------------------------------------------------
-
 
 void __fastcall TForm1::sdcCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
@@ -485,14 +479,9 @@ void __fastcall TForm1::sduCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
 Memo1->Lines->Clear();
-Memo1->Lines->Add(SDUCBHELP);        
+Memo1->Lines->Add(SDUCBHELP);
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
 
 void __fastcall TForm1::Label1DblClick(TObject *Sender)
 {
@@ -501,13 +490,27 @@ void __fastcall TForm1::Label1DblClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
+void __fastcall TForm1::asmCBMouseMove(TObject *Sender, TShiftState Shift,
+      int X, int Y)
+{
+        Memo1->Lines->Clear();
+        Memo1->Lines->Add(ASMCBHELP);
+}
+//---------------------------------------------------------------------------
 
 void __fastcall TForm1::scsCBMouseMove(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
-  Memo1->Lines->Clear();
-Memo1->Lines->Add(SCSCBHELP);
+        Memo1->Lines->Clear();
+        Memo1->Lines->Add(SCSCBHELP);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::swoCBMouseMove(TObject *Sender, TShiftState Shift,
+      int X, int Y)
+{
+        Memo1->Lines->Clear();
+        Memo1->Lines->Add(SWOCBHELP);
 }
 //---------------------------------------------------------------------------
 
@@ -518,11 +521,9 @@ swoCB->Enabled=true;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::swoCBMouseMove(TObject *Sender, TShiftState Shift,
-      int X, int Y)
+void __fastcall TForm1::Label5Click(TObject *Sender)
 {
-Memo1->Lines->Clear();
-Memo1->Lines->Add(SWOCBHELP);
+        ShellExecute(NULL,"open","http://reddit.com/r/tronscript", NULL, NULL, SW_SHOWNORMAL);        
 }
 //---------------------------------------------------------------------------
 

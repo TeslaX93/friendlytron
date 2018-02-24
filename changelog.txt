@@ -28,4 +28,4 @@ Beta 4
 - removed srr and srr switches
 
 Beta 5
-+ 10.0 support
++ 10.4 support

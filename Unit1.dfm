@@ -3,8 +3,8 @@ object Form1: TForm1
   Top = 107
   BorderStyle = bsDialog
   Caption = 'FriendlyTron by TeslaX93'
-  ClientHeight = 346
-  ClientWidth = 662
+  ClientHeight = 353
+  ClientWidth = 609
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,28 +17,47 @@ object Form1: TForm1
   TextHeight = 13
   object Label3: TLabel
     Left = 8
-    Top = 328
+    Top = 336
     Width = 230
     Height = 13
-    Caption = 'FriendlyTron BETA 5 for Tron 10.0+ by TeslaX93'
+    Caption = 'FriendlyTron BETA 5 for Tron 10.4+ by TeslaX93'
   end
   object Label1: TLabel
-    Left = 472
-    Top = 160
+    Left = 416
+    Top = 192
     Width = 53
     Height = 13
     Caption = 'Description'
     OnDblClick = Label1DblClick
   end
   object Label4: TLabel
-    Left = 384
-    Top = 320
-    Width = 272
+    Left = 272
+    Top = 336
+    Width = 377
     Height = 13
-    Caption = 'Tron is free and open-source script written by /u/vocatus.'
+    Caption = 
+      'Tron is free and open-source script written by reddit.com/u/voca' +
+      'tus.'
+  end
+  object Label5: TLabel
+    Left = 416
+    Top = 168
+    Width = 185
+    Height = 13
+    Alignment = taCenter
+    Caption = 'Official TronScript Subreddit'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold, fsUnderline]
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label5Click
   end
   object GroupBox1: TGroupBox
-    Left = 472
+    Left = 416
     Top = 0
     Width = 185
     Height = 153
@@ -61,9 +80,9 @@ object Form1: TForm1
       OnMouseMove = CheckBatLBMouseMove
     end
     object CallTronBtn: TButton
-      Left = 24
+      Left = 16
       Top = 48
-      Width = 129
+      Width = 153
       Height = 33
       Caption = 'Run Tron'
       Font.Charset = DEFAULT_CHARSET
@@ -77,9 +96,9 @@ object Form1: TForm1
       OnMouseMove = CallTronBtnMouseMove
     end
     object CancelBtn: TButton
-      Left = 24
+      Left = 16
       Top = 96
-      Width = 129
+      Width = 153
       Height = 33
       Caption = 'Cancel'
       TabOrder = 1
@@ -90,8 +109,8 @@ object Form1: TForm1
   object GroupBox2: TGroupBox
     Left = 8
     Top = 0
-    Width = 457
-    Height = 321
+    Width = 401
+    Height = 329
     Caption = 'Custom Options (leave all unchecked for default TronScript run)'
     TabOrder = 1
     object Label2: TLabel
@@ -113,7 +132,7 @@ object Form1: TForm1
     end
     object GroupBox3: TGroupBox
       Left = 8
-      Top = 224
+      Top = 232
       Width = 209
       Height = 89
       Caption = 'Advanced'
@@ -157,7 +176,7 @@ object Form1: TForm1
     end
     object erCB: TCheckBox
       Left = 8
-      Top = 48
+      Top = 64
       Width = 161
       Height = 17
       Caption = 'Email a report when finished'
@@ -166,7 +185,7 @@ object Form1: TForm1
     end
     object mCB: TCheckBox
       Left = 8
-      Top = 64
+      Top = 80
       Width = 169
       Height = 17
       Caption = 'Preserve OEM ModernUI Apps'
@@ -175,7 +194,7 @@ object Form1: TForm1
     end
     object npCB: TCheckBox
       Left = 8
-      Top = 80
+      Top = 96
       Width = 185
       Height = 17
       Caption = 'Skip the pause at the end of script'
@@ -184,7 +203,7 @@ object Form1: TForm1
     end
     object oCB: TCheckBox
       Left = 8
-      Top = 96
+      Top = 112
       Width = 129
       Height = 17
       Caption = 'Power off after running'
@@ -194,7 +213,7 @@ object Form1: TForm1
     end
     object pCB: TCheckBox
       Left = 8
-      Top = 112
+      Top = 128
       Width = 137
       Height = 17
       Caption = 'Preserve power settings'
@@ -203,7 +222,7 @@ object Form1: TForm1
     end
     object rCB: TCheckBox
       Left = 8
-      Top = 128
+      Top = 144
       Width = 137
       Height = 17
       Caption = 'Reboot after completion'
@@ -213,7 +232,7 @@ object Form1: TForm1
     end
     object xCB: TCheckBox
       Left = 8
-      Top = 160
+      Top = 176
       Width = 145
       Height = 17
       Caption = 'Self-destruct'
@@ -232,7 +251,7 @@ object Form1: TForm1
     end
     object sdbCB: TCheckBox
       Left = 224
-      Top = 64
+      Top = 48
       Width = 97
       Height = 17
       Caption = 'OEM Bloatware'
@@ -242,7 +261,7 @@ object Form1: TForm1
     end
     object sdCB: TCheckBox
       Left = 224
-      Top = 80
+      Top = 64
       Width = 105
       Height = 17
       Caption = 'Defragmentation'
@@ -251,7 +270,7 @@ object Form1: TForm1
     end
     object seCB: TCheckBox
       Left = 224
-      Top = 96
+      Top = 80
       Width = 113
       Height = 17
       Caption = 'Event Log clearing'
@@ -260,7 +279,7 @@ object Form1: TForm1
     end
     object skCB: TCheckBox
       Left = 224
-      Top = 112
+      Top = 96
       Width = 169
       Height = 17
       Caption = 'Kaspersky Virus Rescue Tool'
@@ -269,7 +288,7 @@ object Form1: TForm1
     end
     object smCB: TCheckBox
       Left = 224
-      Top = 128
+      Top = 112
       Width = 153
       Height = 17
       Caption = 'MalwareBytes Anti-Malware'
@@ -278,7 +297,7 @@ object Form1: TForm1
     end
     object sapCB: TCheckBox
       Left = 224
-      Top = 144
+      Top = 128
       Width = 97
       Height = 17
       Caption = 'Patches'
@@ -287,7 +306,7 @@ object Form1: TForm1
     end
     object sprCB: TCheckBox
       Left = 224
-      Top = 160
+      Top = 144
       Width = 129
       Height = 17
       Caption = 'Pagefile settings reset'
@@ -314,7 +333,7 @@ object Form1: TForm1
     end
     object swuCB: TCheckBox
       Left = 224
-      Top = 256
+      Top = 240
       Width = 105
       Height = 17
       Caption = 'Windows Update'
@@ -324,7 +343,7 @@ object Form1: TForm1
     end
     object eCB: TCheckBox
       Left = 8
-      Top = 32
+      Top = 48
       Width = 97
       Height = 17
       Caption = 'Accept EULA'
@@ -333,7 +352,7 @@ object Form1: TForm1
     end
     object GroupBox4: TGroupBox
       Left = 224
-      Top = 272
+      Top = 280
       Width = 161
       Height = 41
       Caption = 'Help'
@@ -351,7 +370,7 @@ object Form1: TForm1
     end
     object udlCB: TCheckBox
       Left = 8
-      Top = 144
+      Top = 160
       Width = 201
       Height = 17
       Caption = 'Upload debug logs'
@@ -382,30 +401,40 @@ object Form1: TForm1
       TabOrder = 24
       OnMouseMove = sduCBMouseMove
     end
+    object asmCB: TCheckBox
+      Left = 8
+      Top = 32
+      Width = 185
+      Height = 17
+      Caption = 'Automatically reboot to Safe Mode'
+      Enabled = False
+      TabOrder = 25
+      OnMouseMove = asmCBMouseMove
+    end
     object scsCB: TCheckBox
       Left = 224
-      Top = 48
-      Width = 97
+      Top = 160
+      Width = 145
       Height = 17
-      Caption = 'Custom Scripts'
-      TabOrder = 25
+      Caption = 'Skip custom scripts'
+      TabOrder = 26
       OnMouseMove = scsCBMouseMove
     end
     object swoCB: TCheckBox
       Left = 224
-      Top = 240
-      Width = 97
+      Top = 256
+      Width = 153
       Height = 17
-      Caption = 'WSUS Offline'
-      TabOrder = 26
+      Caption = 'WSUS Offline updates'
+      TabOrder = 27
       OnMouseMove = swoCBMouseMove
     end
   end
   object Memo1: TMemo
-    Left = 472
-    Top = 176
+    Left = 416
+    Top = 208
     Width = 185
-    Height = 137
+    Height = 121
     ReadOnly = True
     TabOrder = 2
   end

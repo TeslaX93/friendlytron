@@ -52,8 +52,10 @@ __published:	// IDE-managed Components
         TCheckBox *sduCB;
         TLabel *Label1;
         TLabel *Label4;
+        TCheckBox *asmCB;
         TCheckBox *scsCB;
         TCheckBox *swoCB;
+        TLabel *Label5;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall CancelBtnClick(TObject *Sender);
         void __fastcall aCBClick(TObject *Sender);
@@ -133,11 +135,14 @@ __published:	// IDE-managed Components
         void __fastcall sduCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
         void __fastcall Label1DblClick(TObject *Sender);
+        void __fastcall asmCBMouseMove(TObject *Sender, TShiftState Shift,
+          int X, int Y);
         void __fastcall scsCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
-        void __fastcall swuCBClick(TObject *Sender);
         void __fastcall swoCBMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y);
+        void __fastcall swuCBClick(TObject *Sender);
+        void __fastcall Label5Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
